@@ -13,7 +13,7 @@ The piscine are a serie of selection projects to enter [42](https://www.42networ
 - Piscine C 00 - 100/100
 - Piscine C 01 - 100/100
 - Piscine C 02 - 100/100
-- Piscine C 03 - 100/100
+- Piscine C 03 - 75/100
 - Piscine C 04 - 100/100
 - Piscine C 05 - 100/100
 - Piscine C 06 - 100/100
