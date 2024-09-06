@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kseligma <kseligma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 12:39:14 by kseligma          #+#    #+#             */
-/*   Updated: 2024/08/15 01:47:16 by kseligma         ###   ########.fr       */
+/*   Created: 2024/09/05 22:21:55 by kseligma          #+#    #+#             */
+/*   Updated: 2024/09/05 22:38:10 by kseligma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	ft_list_reverse(t_list **begin_list)
 {
-	int	*res;
-	int	ind;
+	t_list	*right;
+	t_list	*left;
+	t_list	*after_right;
 
-	ind = 0;
-	res = malloc(length * sizeof(int));
-	if (res == 0)
-		return (0);
-	while (ind < length)
+	if (!begin_list)
+		return;
+	left = NULL;
+	right = *begin_list;
+	while (right)
 	{
-		res[ind] = f(tab[ind]);
-		ind ++;
+		after_right = right->next;
+		right->next = left;
+		left = right;
+		right = after_right;
 	}
-	return (res);
+	*begin_list = left;
 }

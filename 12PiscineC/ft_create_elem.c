@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kseligma <kseligma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 12:39:14 by kseligma          #+#    #+#             */
-/*   Updated: 2024/08/15 01:47:16 by kseligma         ###   ########.fr       */
+/*   Created: 2024/09/05 21:55:15 by kseligma          #+#    #+#             */
+/*   Updated: 2024/09/05 22:16:45 by kseligma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+t_list	*ft_create_elem(void *data)
 {
-	int	*res;
-	int	ind;
+	t_list	*lst;
 
-	ind = 0;
-	res = malloc(length * sizeof(int));
-	if (res == 0)
-		return (0);
-	while (ind < length)
-	{
-		res[ind] = f(tab[ind]);
-		ind ++;
-	}
-	return (res);
+	lst = malloc(sizeof(*lst));
+	if (!lst)
+		return (NULL);
+	lst->data = data;
+	lst->next = NULL;
+	return (lst);	
 }

@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kseligma <kseligma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 12:39:14 by kseligma          #+#    #+#             */
-/*   Updated: 2024/08/15 01:47:16 by kseligma         ###   ########.fr       */
+/*   Created: 2024/09/05 22:02:14 by kseligma          #+#    #+#             */
+/*   Updated: 2024/09/05 22:06:23 by kseligma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	ft_list_push_front(t_list **begin_list, void *data)
 {
-	int	*res;
-	int	ind;
+	t_list	*new_node;
 
-	ind = 0;
-	res = malloc(length * sizeof(int));
-	if (res == 0)
-		return (0);
-	while (ind < length)
-	{
-		res[ind] = f(tab[ind]);
-		ind ++;
-	}
-	return (res);
+	if (!begin_list)
+		return ;
+	new_node = ft_create_elem(data);
+	if (!new_node)
+		return ;
+	new_node->next = (*begin_list)->next;
+	*begin_list = new_node;
 }

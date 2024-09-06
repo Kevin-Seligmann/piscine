@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kseligma <kseligma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 12:39:14 by kseligma          #+#    #+#             */
-/*   Updated: 2024/08/15 01:47:16 by kseligma         ###   ########.fr       */
+/*   Created: 2024/09/06 03:56:25 by kseligma          #+#    #+#             */
+/*   Updated: 2024/09/06 03:57:49 by kseligma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_btree.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+t_btree	*btree_create_node(void *item)
 {
-	int	*res;
-	int	ind;
+	t_btree	*node;
 
-	ind = 0;
-	res = malloc(length * sizeof(int));
-	if (res == 0)
-		return (0);
-	while (ind < length)
-	{
-		res[ind] = f(tab[ind]);
-		ind ++;
-	}
-	return (res);
+	node = malloc(sizeof(*node));
+	if (!node)
+		return (NULL);
+	node->item = item;
+	node->left = 0;
+	node->right = 0;	
 }
